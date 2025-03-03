@@ -13,7 +13,7 @@ function App() {
     <div className="app-container">
       <h1>Current URL Path:</h1>
       <div className="url-display">
-        {currentPath || "/"}
+        {currentPath || "path not found"}
       </div>
     </div>
   )
