@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import axios from "axios";
-import type { IncomingMessage, ServerResponse } from "http";
+import type { IncomingMessage, ServerResponse } from "node:http";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
           async (req: IncomingMessage, res: ServerResponse, next) => {
             const url = req.url || "";
 
-            if (url === "/" || url === "/test") {
+            if (url === "/") {
               try {
                 const response = await axios.get("https://www.google.com");
                 res.setHeader("Content-Type", "text/html");
