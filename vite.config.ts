@@ -4,13 +4,13 @@ import axios from "axios";
 import type { IncomingMessage, ServerResponse } from "node:http";
 
 function getRedirect(url: string) {
-  if (url === '/') {
-    return 'https://www.google.com'
+  if (url === "/") {
+    return "https://www.google.com";
   }
-  if (url === '/test') {
-    return 'https://www.youtube.com'
+  if (url === "/test") {
+    return "https://www.youtube.com";
   }
-  return ''
+  return "";
 }
 
 // https://vitejs.dev/config/
@@ -22,11 +22,11 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use(
           async (req: IncomingMessage, res: ServerResponse, next) => {
-            const url = req.url || "";
+            const url = getRedirect(req.url || "");
 
             if (url !== "") {
               try {
-                const response = await axios.get(getRedirect(url));
+                const response = await axios.get(url);
                 res.setHeader("Content-Type", "text/html");
                 res.end(response.data);
               } catch (error) {
