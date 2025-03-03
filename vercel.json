@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "\/",
-      "destination": "https://www.google.com"
+      "destination": "https://www.reddit.com"
     },
     {
       "source": "/test",
